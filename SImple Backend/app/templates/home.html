@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html lang="en-us">   
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Семантический анализ - разбираем предложение на части речи</title>
+  </head>
+  
+  <body>
+    <h1>Результат семантического анализа2</h1>
+    <h2>Вы ввели текст:</h2>
+    {{userText}}
+    <h2>Ваш текст, разобранный по семантике</h2>	
+    {% for dataz in result %}
+    <div class="col">
+    {{ dataz.text }} - {{ dataz.pos_ }}
+    </div>
+    {% endfor %}
+
+    <p>This is the home page of our application. </p>
+  </body> 
+</html>

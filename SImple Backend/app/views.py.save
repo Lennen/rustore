@@ -1,0 +1,45 @@
+from app import app
+import spacy
+from flask import request
+from flask import render_template
+from spacy.lang.ru.examples import sentences
+from flask import jsonify
+
+nlp = spacy.load("ru_core_news_sm")
+#nlp = spacy.load("en_core_web_sm")
+
+#doc = nlp(sentences[0])
+#doc = nlp('Привет, Долли, больше нет боли, ведь есть GENERVIS')
+doc = nlp('Друзья и знакомые! Всех искренне приглашаю подписаться на наш с Дашли Рутюб канал https://rutube.ru/channel/25384128/, а также на мой оффициальный канал Meurch на рутюбе! https://rutube.ru/channel/26420086/ Учитывая, что на ютубе какие-то траблы с монетизацией, есть очень важная цель - набрать 5000 просмотров на рутюбе и подключить монетизацию. Это - как заработать 1200 рублей на Арбате, постояв полчаса и попев свои песни... Вроде мало - а приятно. Поэтому просьба всем подписаться на эти 2 канала и смотреть время от времени видосы, которые могут быть для Вас интересны и полезны в чем-то!')
+
+@app.route('/')
+def home():
+    a = 62
+    b = 41
+    return f'a is {a} and b is {copacopa}'
+
+@app.route('/template', methods=['GET', 'POST'])
+def template():
+    if request.method == 'GET':
+        userText = request.args.get('userText')
+        #doc=nlp(userText)
+    return render_template('home.html', result=doc, userText=userText)
+
+# allow both GET and POST requests
+@app.route('/form-example', methods=['GET', 'POST'])
+def form_example():
+    # handle the POST request
+    if request.method == 'POST':
+        userText = request.form.get('userText')
+        framework = request.form.get('framework')
+        doc=nlp(userText)
+        for
+        return render_template('template_json.html', result=doc, userText=userText)
+
+    # otherwise handle the GET request
+    return '''
+           <form method="POST">
+               <div><label>Введите текст: <input type="text" name="userText"></label></div>
+               <div><label>Framework: <input type="text" name="framework"></label></div>
+               <input type="submit" value="Submit">
+           </form>'''

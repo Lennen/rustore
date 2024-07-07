@@ -1,0 +1,39 @@
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Семантический анализ - разбираем предложение на части речи</title>
+  </head>
+
+  <body>
+    <h1>Результат семантического анализа**</h1>
+    <h2>Вы ввели текст:</h2>
+    {{common_nouns[0]}}    
+    <h2>Числа в тексте**</h2>
+    {% for dataz in result %}
+    {{dataz.like_num}};
+    {% endfor %}
+    <h2>Знаки пунктуации**</h2>
+    {% for dataz in result %}
+    {{dataz.is_punct}}
+    {% endfor %}
+    <h2>Слова только из букв**</h2>
+    {% for dataz in result %}
+    {{dataz.is_alpha}}
+    {% endfor %}
+    <h2>Слова, содержащие числа**</h2>
+    {% for dataz in result %}
+    {{dataz.is_alpha}}
+    {% endfor %}
+    <h2>Наиболее часто встречающиеся слова**</h2>
+    {{ common_nouns[1] }}
+    <h2>Слова имеют смысл**</h2>
+    {% for dataz in result %}
+    {{ dataz.has_vector }}   {{ dataz.text }}
+    {% endfor %}
+    <h2>Ваш текст, разобранный по семантике**</h2>
+    {% for dataz in result %}
+    {{ dataz.text }}   {{ dataz.pos_ }}
+    {% endfor %}
+  </body>
+</html>
